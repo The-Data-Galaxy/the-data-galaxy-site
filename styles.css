@@ -177,6 +177,13 @@ blockquote { margin: 38px 0; padding: 26px 0 26px 26px; border-left: 2px solid v
 .skill-candidates h3 { margin: 45px 0 15px; font: 500 22px/1.35 "Songti SC", STSong, serif; }
 .skill-candidates p { color: rgba(243,238,227,.53); font-size: 12px; line-height: 1.75; }
 .skill-candidates small, .skill-candidates a { display: block; margin-top: 30px; color: var(--gold-light); font: 9px monospace; }
+.skill-showcase { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid rgba(240,203,120,.45); }
+.skill-showcase-card { min-height: 455px; display: flex; flex-direction: column; padding: clamp(30px, 3.5vw, 52px); border-right: 1px solid rgba(240,203,120,.3); background: rgba(6,19,33,.68); }
+.skill-showcase-card:last-child { border-right: 0; }
+.skill-showcase-card h3 { margin: 16px 0 20px; font: 500 clamp(28px, 2.7vw, 42px)/1.22 "Songti SC", STSong, serif; }
+.skill-showcase-card > p:not(.skill-number) { margin: 0; color: rgba(243,238,227,.65); font-size: 14px; line-height: 1.9; }
+.skill-showcase-card .skill-tags { margin-top: 28px; }
+.skill-showcase-card .button { margin-top: auto; align-self: flex-start; }
 
 .starlab { border-bottom: 1px solid var(--rule); }
 .lab-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 7vw; align-items: center; }
@@ -192,6 +199,16 @@ blockquote { margin: 38px 0; padding: 26px 0 26px 26px; border-left: 2px solid v
 .episode-list span { color: var(--vermillion); font: 10px monospace; }
 .episode-list strong { font-size: 14px; font-weight: 500; }
 .episode-list small { color: var(--muted); font-size: 10px; }
+.starlab-intro { max-width: 800px; margin: -32px 0 48px auto; color: var(--muted); font: 500 19px/1.8 "Songti SC", STSong, serif; }
+.live-poster-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.live-poster-card { display: flex; flex-direction: column; background: var(--navy); color: var(--paper); border: 1px solid var(--ink); transition: transform .25s ease, box-shadow .25s ease; }
+.live-poster-card:hover { transform: translateY(-7px); box-shadow: 9px 9px 0 var(--gold); }
+.live-poster-card img { width: 100%; aspect-ratio: 3 / 4.35; object-fit: cover; object-position: top; }
+.live-poster-card div { padding: 22px 20px 24px; }
+.live-poster-card span { display: block; color: var(--gold-light); font: 9px monospace; letter-spacing: .1em; }
+.live-poster-card h3 { margin: 12px 0 10px; font: 500 21px/1.35 "Songti SC", STSong, serif; }
+.live-poster-card p { margin: 0; color: rgba(243,238,227,.58); font-size: 12px; line-height: 1.7; }
+.starlab-action { margin-top: 36px; }
 
 .content-section { background: #e9e2d5; }
 .content-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 9vw; align-items: center; }
@@ -243,6 +260,7 @@ footer > p { margin: 0; color: rgba(243,238,227,.46); font-size: 12px; line-heig
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 160px; }
   .hero-index { max-width: 680px; }
   .works-grid { grid-template-columns: 1fr 1fr; }
+  .live-poster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .audio-card { grid-column: 1 / -1; min-height: 340px; }
   .book-card { min-height: 390px; }
 }
@@ -268,6 +286,9 @@ footer > p { margin: 0; color: rgba(243,238,227,.46); font-size: 12px; line-heig
   .skill-main { border-right: 0; border-bottom: 1px solid rgba(240,203,120,.35); }
   .skill-candidates { grid-template-columns: 1fr; }
   .skill-candidates article { border-right: 0; border-bottom: 1px solid rgba(243,238,227,.18); }
+  .skill-showcase { grid-template-columns: 1fr; }
+  .skill-showcase-card { min-height: 0; border-right: 0; border-bottom: 1px solid rgba(240,203,120,.3); }
+  .skill-showcase-card:last-child { border-bottom: 0; }
   .poster-card { max-width: 430px; }
   .content-image { max-width: 340px; }
   .channel-list a { grid-template-columns: 34px 1fr auto; gap: 12px; padding: 20px 0; }
@@ -276,6 +297,7 @@ footer > p { margin: 0; color: rgba(243,238,227,.46); font-size: 12px; line-heig
   .channel-list a > span:last-child { grid-column: 3; grid-row: 1; }
   .episode-list div { grid-template-columns: 55px 1fr; }
   .episode-list small { grid-column: 2; }
+  .starlab-intro { margin: -18px 0 38px; font-size: 17px; }
   footer { grid-template-columns: 1fr; }
   .copyright { grid-column: 1; }
 }
@@ -288,6 +310,7 @@ footer > p { margin: 0; color: rgba(243,238,227,.46); font-size: 12px; line-heig
   .flow-row { grid-template-columns: 34px 1fr; }
   .flow-row small { grid-column: 2; }
   .tutorial-list a { grid-template-columns: 48px 1fr 14px; }
+  .live-poster-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

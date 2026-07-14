@@ -225,11 +225,12 @@ blockquote { margin: 38px 0; padding: 26px 0 26px 26px; border-left: 2px solid v
 .recommended-skills .section-heading { margin-bottom: 58px; }
 .recommended-skills .section-heading > div:last-child { grid-column: 2; }
 .recommended-skills .section-heading p { max-width: 660px; margin: 22px 0 0; color: var(--muted); font-size: 16px; line-height: 1.85; }
-.recommended-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.recommended-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .recommended-card { display: flex; flex-direction: column; min-height: 500px; padding: clamp(30px, 4vw, 54px); background: rgba(255,255,255,.36); border: 1px solid var(--rule); transition: transform .25s ease, box-shadow .25s ease; }
 .recommended-card:hover { transform: translateY(-6px); box-shadow: 10px 10px 0 var(--gold); }
 .recommended-card-top { display: flex; justify-content: space-between; align-items: start; gap: 22px; color: var(--vermillion); font: 10px/1.5 monospace; letter-spacing: .08em; }
 .recommended-card-top small { max-width: 220px; color: var(--muted); font: 10px/1.5 monospace; letter-spacing: .02em; text-align: right; }
+.recommended-card-top small b { color: var(--ink); font-weight: 600; }
 .recommended-card h3 { margin: 52px 0 18px; font: 500 clamp(28px, 3.3vw, 44px)/1.22 "Songti SC", STSong, serif; }
 .recommended-card > p { max-width: 650px; margin: 0; color: #4e5964; font-size: 14px; line-height: 1.9; }
 .review-note { margin: 28px 0 26px; padding: 20px 22px; border-left: 2px solid var(--vermillion); background: rgba(169,74,63,.07); }
@@ -318,6 +319,7 @@ footer > p { margin: 0; color: rgba(243,238,227,.46); font-size: 12px; line-heig
   .hero-index { max-width: 680px; }
   .skills-hero-index { max-width: 680px; }
   .works-grid { grid-template-columns: 1fr 1fr; }
+  .recommended-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .live-poster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .audio-card { grid-column: 1 / -1; min-height: 340px; }
   .book-card { min-height: 390px; }

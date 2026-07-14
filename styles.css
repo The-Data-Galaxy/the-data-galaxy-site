@@ -201,7 +201,9 @@ blockquote { margin: 38px 0; padding: 26px 0 26px 26px; border-left: 2px solid v
 .review-note strong { display: block; font: 500 14px/1.75 "Songti SC", STSong, serif; }
 .recommended-card .skill-tags { margin: 0 0 30px; }
 .recommended-card .skill-tags span { border-color: var(--rule); }
-.recommended-card > a { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 22px; border-top: 1px solid var(--rule); color: var(--vermillion); font-size: 13px; }
+.recommended-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; margin-top: auto; padding-top: 22px; border-top: 1px solid var(--rule); }
+.recommended-actions .button { min-height: 44px; padding: 0 17px; font-size: 12px; }
+.report-link { display: inline-flex; align-items: center; gap: 10px; padding-bottom: 5px; border-bottom: 1px solid currentColor; color: var(--vermillion); font-size: 13px; }
 
 .starlab { border-bottom: 1px solid var(--rule); }
 .lab-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 7vw; align-items: center; }

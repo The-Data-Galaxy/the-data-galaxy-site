@@ -185,6 +185,42 @@ blockquote { margin: 38px 0; padding: 26px 0 26px 26px; border-left: 2px solid v
 .skill-showcase-card .skill-tags { margin-top: 28px; }
 .skill-showcase-card .button { margin-top: auto; align-self: flex-start; }
 
+.skills-hub { position: relative; overflow: hidden; background: var(--navy); color: var(--paper); }
+.skills-hub:before { content:""; position:absolute; inset:0; opacity:.18; background-image: radial-gradient(rgba(240,203,120,.65) 0 1px, transparent 1.5px); background-size: 86px 86px; }
+.skills-hub-inner { position: relative; z-index: 1; display: grid; grid-template-columns: .95fr 1fr; gap: 10vw; }
+.skills-hub h2, .skills-next h2 { margin: 0; font: 500 clamp(38px, 4.6vw, 68px)/1.18 "Songti SC", STSong, serif; letter-spacing: -.04em; }
+.skills-hub .section-kicker, .skills-next .section-kicker { color: var(--gold-light); }
+.skills-hub-copy > p { max-width: 650px; margin: 0 0 34px; color: rgba(243,238,227,.68); font-size: 17px; line-height: 1.9; }
+.skills-hub-index { margin: 0 0 38px; border-top: 1px solid rgba(240,203,120,.48); }
+.skills-hub-index div { display: grid; grid-template-columns: 48px .8fr 1.2fr; gap: 18px; align-items: center; padding: 22px 0; border-bottom: 1px solid rgba(243,238,227,.16); }
+.skills-hub-index span { color: var(--gold); font: 10px monospace; }
+.skills-hub-index strong { font: 500 19px "Songti SC", STSong, serif; }
+.skills-hub-index small { color: rgba(243,238,227,.48); font-size: 12px; }
+
+.starlab-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 26px; margin-top: 36px; }
+.starlab-actions .report-link { color: var(--vermillion); }
+
+.skills-hero { min-height: 700px; position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, .58fr); gap: clamp(56px, 8vw, 140px); align-items: end; padding: 160px clamp(24px, 7.4vw, 120px) 88px; color: var(--paper); background: radial-gradient(circle at 12% 25%, rgba(240,203,120,.9) 0 1px, transparent 1.7px), radial-gradient(circle at 44% 22%, rgba(255,255,255,.72) 0 1px, transparent 1.6px), radial-gradient(circle at 82% 35%, rgba(255,255,255,.7) 0 1px, transparent 1.5px), linear-gradient(135deg, #061321, #0a1c31 58%, #102942); }
+.skills-hero:after { content:""; position:absolute; inset:0; opacity:.23; pointer-events:none; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size:64px 64px; }
+.skills-hero-copy, .skills-hero-index { position: relative; z-index: 1; }
+.skills-hero h1 { max-width: 900px; margin: 0; font: 500 clamp(48px, 5.4vw, 82px)/1.08 "Songti SC", STSong, "Noto Serif CJK SC", serif; letter-spacing: -.05em; }
+.skills-hero h1 em { color: var(--gold-light); font-style: normal; }
+.skills-hero-copy > p:not(.eyebrow) { max-width: 720px; margin: 34px 0 0; color: rgba(243,238,227,.72); font-size: 17px; line-height: 1.95; }
+.skills-hero-index { border-top: 1px solid rgba(240,203,120,.75); padding-top: 16px; }
+.skills-hero-index > a { display: grid; grid-template-columns: 32px 1fr auto; gap: 16px; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.15); }
+.skills-hero-index > a > span { color: var(--gold); font: 11px monospace; }
+.skills-hero-index strong, .skills-hero-index small { display: block; }
+.skills-hero-index strong { margin-bottom: 7px; font-size: 15px; font-weight: 500; }
+.skills-hero-index small { color: rgba(243,238,227,.5); font-size: 12px; }
+.skills-hero-index b { color: var(--gold-light); font-weight: 400; }
+.skills-update-note { margin: 26px 0 0; color: rgba(243,238,227,.42); font: 10px/1.6 monospace; letter-spacing: .08em; }
+.skills-page .skills { scroll-margin-top: 0; }
+.skills-page .recommended-card { min-height: 540px; }
+.review-boundary { max-width: 880px; margin: 36px 0 0 auto; padding: 18px 20px; border: 1px solid var(--rule); color: var(--muted); font-size: 11px; line-height: 1.75; }
+.skills-next { background: var(--vermillion); color: var(--paper); }
+.skills-next-inner { display: grid; grid-template-columns: 1fr .8fr; gap: 10vw; align-items: end; }
+.skills-next-inner > div:last-child > p { margin: 0 0 34px; color: rgba(243,238,227,.74); font-size: 16px; line-height: 1.9; }
+
 .recommended-skills { background: #e9e2d5; border-bottom: 1px solid var(--rule); }
 .recommended-skills .section-heading { margin-bottom: 58px; }
 .recommended-skills .section-heading > div:last-child { grid-column: 2; }
@@ -278,7 +314,9 @@ footer > p { margin: 0; color: rgba(243,238,227,.46); font-size: 12px; line-heig
   .site-header { grid-template-columns: 1fr auto; }
   .site-header nav { display: none; }
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 160px; }
+  .skills-hero { grid-template-columns: 1fr; min-height: auto; padding-top: 160px; }
   .hero-index { max-width: 680px; }
+  .skills-hero-index { max-width: 680px; }
   .works-grid { grid-template-columns: 1fr 1fr; }
   .live-poster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .audio-card { grid-column: 1 / -1; min-height: 340px; }
@@ -290,7 +328,9 @@ footer > p { margin: 0; color: rgba(243,238,227,.46); font-size: 12px; line-heig
   .brand { font-size: 14px; }
   .header-action { font-size: 11px; }
   .hero { padding: 132px 22px 62px; gap: 72px; }
+  .skills-hero { padding: 132px 22px 62px; gap: 72px; }
   .hero h1 { font-size: clamp(41px, 12vw, 58px); }
+  .skills-hero h1 { font-size: clamp(41px, 12vw, 58px); }
   .hero-intro { font-size: 15px; }
   .eyebrow { flex-direction: column; gap: 8px; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 20px; }
@@ -300,7 +340,7 @@ footer > p { margin: 0; color: rgba(243,238,227,.46); font-size: 12px; line-heig
   .section-heading h2, .section-heading > p { grid-column: 1; }
   .recommended-skills .section-heading > div:last-child { grid-column: 1; }
   .recommended-grid { grid-template-columns: 1fr; }
-  .about-grid, .future-grid, .content-grid, .lab-grid { grid-template-columns: 1fr; gap: 58px; }
+  .about-grid, .future-grid, .content-grid, .lab-grid, .skills-hub-inner, .skills-next-inner { grid-template-columns: 1fr; gap: 58px; }
   .works-grid { grid-template-columns: 1fr; }
   .audio-card { grid-column: auto; }
   .book-card { grid-template-columns: .8fr 1fr; }
@@ -320,6 +360,8 @@ footer > p { margin: 0; color: rgba(243,238,227,.46); font-size: 12px; line-heig
   .episode-list div { grid-template-columns: 55px 1fr; }
   .episode-list small { grid-column: 2; }
   .starlab-intro { margin: -18px 0 38px; font-size: 17px; }
+  .skills-hub-index div { grid-template-columns: 36px 1fr; }
+  .skills-hub-index small { grid-column: 2; }
   footer { grid-template-columns: 1fr; }
   .copyright { grid-column: 1; }
 }

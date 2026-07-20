@@ -181,6 +181,7 @@ blockquote { margin: 38px 0; padding: 26px 0 26px 26px; border-left: 2px solid v
 .skill-showcase-card { min-height: 455px; display: flex; flex-direction: column; padding: clamp(30px, 3.5vw, 52px); border-right: 1px solid rgba(240,203,120,.3); border-bottom: 1px solid rgba(240,203,120,.3); background: rgba(6,19,33,.68); }
 .skill-showcase-card:nth-child(2n) { border-right: 0; }
 .skill-showcase-card:nth-last-child(-n + 2) { border-bottom: 0; }
+.skill-showcase-card:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: 0; }
 .skill-showcase-card h3 { margin: 16px 0 20px; font: 500 clamp(28px, 2.7vw, 42px)/1.22 "Songti SC", STSong, serif; }
 .skill-showcase-card > p:not(.skill-number) { margin: 0; color: rgba(243,238,227,.65); font-size: 14px; line-height: 1.9; }
 .skill-showcase-card .skill-tags { margin-top: 28px; }
@@ -357,6 +358,7 @@ footer > p { margin: 0; color: rgba(243,238,227,.46); font-size: 12px; line-heig
   .skill-showcase { grid-template-columns: 1fr; }
   .skill-showcase-card { min-height: 0; border-right: 0; border-bottom: 1px solid rgba(240,203,120,.3); }
   .skill-showcase-card:nth-last-child(-n + 2) { border-bottom: 1px solid rgba(240,203,120,.3); }
+  .skill-showcase-card:last-child:nth-child(odd) { grid-column: auto; }
   .skill-showcase-card:last-child { border-bottom: 0; }
   .poster-card { max-width: 430px; }
   .content-image { max-width: 340px; }

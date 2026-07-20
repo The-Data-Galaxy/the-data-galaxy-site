@@ -185,6 +185,9 @@ blockquote { margin: 38px 0; padding: 26px 0 26px 26px; border-left: 2px solid v
 .skill-showcase-card > p:not(.skill-number) { margin: 0; color: rgba(243,238,227,.65); font-size: 14px; line-height: 1.9; }
 .skill-showcase-card .skill-tags { margin-top: 28px; }
 .skill-showcase-card .button { margin-top: auto; align-self: flex-start; }
+.skill-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; margin-top: auto; padding-top: 30px; border-top: 1px solid rgba(243,238,227,.15); }
+.skill-actions .button { margin-top: 0; }
+.skill-repo-link { display: inline-flex; align-items: center; gap: 9px; padding-bottom: 5px; border-bottom: 1px solid currentColor; color: var(--gold-light); font-size: 12px; }
 
 .skills-hub { position: relative; overflow: hidden; background: var(--navy); color: var(--paper); }
 .skills-hub:before { content:""; position:absolute; inset:0; opacity:.18; background-image: radial-gradient(rgba(240,203,120,.65) 0 1px, transparent 1.5px); background-size: 86px 86px; }

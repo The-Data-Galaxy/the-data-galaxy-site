@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="AI 诉讼风向标建设罗盘 Skill 的独立测试结果、安装方式、适用范围与使用边界。" />
+    <title>AI 诉讼风向标建设罗盘 Skill｜测试与安装说明</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="skills-page">
+    <main>
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="返回那一片数据星辰首页"><span class="brand-mark" aria-hidden="true">✦</span><span>那一片数据星辰</span></a>
+        <nav aria-label="主导航"><a href="index.html#about">关于</a><a href="index.html#works">著作</a><a href="skills.html#recommended-skills" aria-current="page">Skills</a><a href="index.html#starlab">星辰实验场</a></nav>
+        <a class="header-action" href="skills.html#recommended-skills">返回推荐 Skill <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <section class="skills-hero" id="top">
+        <div class="orbit orbit-one" aria-hidden="true"></div>
+        <div class="constellation" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="skills-hero-copy">
+          <p class="eyebrow"><span>独立测试 · 安装说明</span><span>RECOMMENDED / 004</span></p>
+          <h1>AI 诉讼风向标<br /><em>建设罗盘 Skill。</em></h1>
+          <p>开发者：阿来律师。它是一份面向 ailitigation.cn 及同类垂直法律内容产品的项目记忆与建设经验档案，不是网站源码、数据库或自动部署工具。</p>
+          <div class="hero-actions"><a class="button button-gold" href="downloads/ai-litigation-compass-v0.1.0.skill" download>下载 v0.1.0 <span aria-hidden="true">↓</span></a><a class="text-link" href="#test-results">查看测试结果 <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <aside class="skills-hero-index" aria-label="页面目录">
+          <p class="index-label">SKILL REPORT / 2026</p>
+          <a href="#test-results"><span>01</span><div><strong>独立测试</strong><small>场景、标准与前向测试</small></div><b aria-hidden="true">↓</b></a>
+          <a href="#install"><span>02</span><div><strong>安装与校验</strong><small>四文件运行时包</small></div><b aria-hidden="true">↓</b></a>
+          <p class="skills-update-note">测试针对 v0.1.0 与特定场景，不保证所有任务结果。</p>
+        </aside>
+      </section>
+
+      <section class="recommended-skills" id="test-results">
+        <div class="section">
+          <div class="section-heading">
+            <div class="section-kicker"><span>01</span> INDEPENDENT TEST</div>
+            <div><h2>通过结构、行为与边界测试。</h2><p>测试重点不是“有没有写出漂亮术语”，而是能否真实恢复既有产品决策、调用相关参考文件，并在缺少实时证据时保持克制。</p></div>
+          </div>
+          <div class="recommended-grid">
+            <article class="recommended-card"><div class="recommended-card-top"><span>FIXED SMOKE</span><small><b>结果：通过</b><br />版本：v0.1.0</small></div><h3>5 / 5 场景</h3><p>覆盖 Copilot 检索与统计迭代、缺少真实仓库与线上状态、语义完整性正反对照，以及要求推翻既有产品偏好的对抗场景。</p><div class="review-note"><span>标准结果</span><strong>14 / 14 条必需标准通过；automatic failure 为 0，regression failure 为 0。</strong></div><div class="skill-tags"><span>黄金场景</span><span>边界场景</span><span>语义对照</span><span>对抗测试</span></div></article>
+            <article class="recommended-card"><div class="recommended-card-top"><span>FORWARD TEST</span><small><b>结果：通过</b><br />隔离测试：3 组</small></div><h3>能恢复约束，也会承认不知道。</h3><p>独立测试正确恢复了全量索引与按需详情、中文三级关键词、精确统计、内容审核、导航与视觉边界。</p><div class="review-note"><span>关键观察</span><strong>当没有真实仓库、分支或部署入口时，它没有把历史路径当成当前环境，也没有声称已经修改或上线。</strong></div><div class="skill-tags"><span>约束忠实度</span><span>证据边界</span><span>不虚报上线</span><span>可追溯</span></div></article>
+            <article class="recommended-card"><div class="recommended-card-top"><span>PACKAGE</span><small><b>结果：通过</b><br />运行时：4 个文件</small></div><h3>可解压、可安装、可复核。</h3><p>归档完整性、路径安全、秘密扫描、干净解压、Skill 校验、安装后逐文件一致性与 SHA-256 校验全部通过。</p><div class="review-note"><span>SHA-256</span><strong>ed838dbea04ba5ee42ef9d9628c25c2dda4b4dd94c94e8cb044fbf821f927024</strong></div><div class="skill-tags"><span>安全路径</span><span>无可执行载荷</span><span>无密钥</span><span>哈希一致</span></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills" id="install">
+        <div class="section skills-inner">
+          <div class="section-heading light">
+            <div class="section-kicker"><span>02</span> INSTALL &amp; USE</div>
+            <h2>把四个运行时文件，<br />放进一个 Skill 目录。</h2>
+            <p>下载文件本质上是 ZIP 归档。解压后应直接看到 SKILL.md、agents/openai.yaml 和 references 下的两份参考文件；不要把未解压的 .skill 文件直接放入 Skill 目录。</p>
+          </div>
+          <div class="skill-showcase">
+            <article class="skill-showcase-card"><p class="skill-number">INSTALL / 001</p><h3>安装</h3><p>把归档解压到 <code>~/.codex/skills/ai-litigation-compass/</code>，重新开始一个 Codex 任务后即可发现。必要时可先把扩展名临时改为 <code>.zip</code> 再解压。</p><div class="skill-tags"><span>SKILL.md</span><span>agents/openai.yaml</span><span>references/schema.md</span><span>references/avatar-prompts.md</span></div><div class="skill-actions"><a class="button button-gold" href="downloads/ai-litigation-compass-v0.1.0.skill" download>直接下载 .skill <span aria-hidden="true">↓</span></a></div></article>
+            <article class="skill-showcase-card"><p class="skill-number">USE / 002</p><h3>调用</h3><p>在新任务中输入：使用 <code>$ai-litigation-compass</code>，规划一次 Copilot 检索与统计能力迭代，并列出不能破坏的产品、内容审核与审美约束。</p><div class="skill-tags"><span>项目迭代</span><span>产品约束</span><span>数据库 Schema</span><span>AI 分身</span></div><div class="skill-actions"><a class="skill-repo-link" href="skills.html#recommended-skills">返回推荐列表 <span aria-hidden="true">↗</span></a></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills-next">
+        <div class="section skills-next-inner"><div><div class="section-kicker"><span>03</span> SCOPE &amp; LIMITS</div><h2>它保存经验，<br />不替代实时核验。</h2></div><div><p>档案中的项目路径、技术栈、人物、案例和线上状态没有在本次发布中重新核验。实施前应以当前仓库、生产环境和开发者确认的信息为准。该下载未附开源许可证，公开提供下载不等于授予开源许可或其他额外权利。</p><a class="button button-gold" href="skills.html#recommended-skills">查看全部推荐 Skill <span aria-hidden="true">↗</span></a></div></div>
+      </section>
+
+      <footer>
+        <div class="footer-brand"><span>✦</span><strong>那一片数据星辰</strong><small>THE DATA GALAXY</small></div>
+        <p>Skill、实测报告与直播补充资料<br />朱玲凤的个人品牌与开放实验场</p>
+        <div class="footer-links"><a href="#top">回到顶部 ↑</a><a href="skills.html#recommended-skills">推荐 Skill</a><a href="https://github.com/The-Data-Galaxy" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a></div>
+        <small class="copyright">© 2026 那一片数据星辰</small>
+      </footer>
+    </main>
+  </body>
+</html>

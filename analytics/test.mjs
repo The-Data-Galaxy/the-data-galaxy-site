@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import worker from "./worker.js";
+import { DASHBOARD_JS } from "./dashboard-assets.js";
 
 class Statement {
   constructor(sql, db) {
@@ -48,6 +49,12 @@ const env = {
 const health = await worker.fetch(new Request("https://analytics.example/health"), env);
 assert.equal(health.status, 200);
 
+const dashboard = await worker.fetch(new Request("https://analytics.example/dashboard"), env);
+assert.equal(dashboard.status, 200);
+assert.match(dashboard.headers.get("content-security-policy"), /frame-ancestors 'none'/);
+assert.doesNotMatch(await dashboard.text(), /secret/);
+new Function(DASHBOARD_JS);
+
 const blocked = await worker.fetch(
   new Request("https://analytics.example/v1/events", {
     method: "POST",
@@ -85,5 +92,16 @@ const unauthorized = await worker.fetch(
   env
 );
 assert.equal(unauthorized.status, 401);
+
+const authorized = await worker.fetch(
+  new Request("https://analytics.example/v1/stats?days=7", {
+    headers: { authorization: "Bearer secret" }
+  }),
+  env
+);
+assert.equal(authorized.status, 200);
+const stats = await authorized.json();
+assert.equal(stats.window_days, 7);
+assert.deepEqual(stats.daily, []);
 
 console.log("analytics worker checks passed");

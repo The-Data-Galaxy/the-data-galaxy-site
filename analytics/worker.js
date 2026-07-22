@@ -1,3 +1,5 @@
+import { DASHBOARD_CSS, DASHBOARD_HTML, DASHBOARD_JS } from "./dashboard-assets.js";
+
 const EVENT_NAMES = new Set([
   "page_view",
   "skill_cta_click",
@@ -14,6 +16,18 @@ export default {
 
     if (request.method === "GET" && url.pathname === "/health") {
       return json({ status: "ok" }, 200, request, env);
+    }
+
+    if (request.method === "GET" && (url.pathname === "/dashboard" || url.pathname === "/dashboard/")) {
+      return dashboardAsset(DASHBOARD_HTML, "text/html; charset=utf-8", false);
+    }
+
+    if (request.method === "GET" && url.pathname === "/dashboard.css") {
+      return dashboardAsset(DASHBOARD_CSS, "text/css; charset=utf-8", true);
+    }
+
+    if (request.method === "GET" && url.pathname === "/dashboard.js") {
+      return dashboardAsset(DASHBOARD_JS, "text/javascript; charset=utf-8", true);
     }
 
     if (request.method === "OPTIONS" && url.pathname === "/v1/events") {
@@ -129,15 +143,31 @@ async function readStats(request, env, url) {
   const days = Math.min(365, Math.max(1, Number.parseInt(url.searchParams.get("days") || "30", 10) || 30));
   await ensureSchema(env.DB);
 
-  const [summary, pages, skills, sources] = await Promise.all([
+  const [summary, daily, pages, skills, sources] = await Promise.all([
     env.DB.prepare(`SELECT
       COUNT(*) AS total_events,
-      SUM(CASE WHEN event_name = 'page_view' THEN 1 ELSE 0 END) AS page_views,
-      COUNT(DISTINCT session_id) AS sessions
+      COALESCE(SUM(CASE WHEN event_name = 'page_view' THEN 1 ELSE 0 END), 0) AS page_views,
+      COUNT(DISTINCT session_id) AS sessions,
+      COALESCE(SUM(CASE WHEN event_name = 'skill_cta_click' THEN 1 ELSE 0 END), 0) AS skill_clicks,
+      COALESCE(SUM(CASE WHEN action IN ('download_zip', 'download_skill') THEN 1 ELSE 0 END), 0) AS download_starts
       FROM analytics_events
       WHERE received_at >= datetime('now', ?)`)
       .bind(`-${days} days`)
       .first(),
+    env.DB.prepare(`WITH RECURSIVE dates(day) AS (
+        SELECT date('now', '+8 hours', ?)
+        UNION ALL
+        SELECT date(day, '+1 day') FROM dates WHERE day < date('now', '+8 hours')
+      )
+      SELECT dates.day AS date,
+        COALESCE(SUM(CASE WHEN event_name = 'page_view' THEN 1 ELSE 0 END), 0) AS page_views,
+        COALESCE(SUM(CASE WHEN event_name = 'skill_cta_click' THEN 1 ELSE 0 END), 0) AS skill_clicks,
+        COUNT(DISTINCT session_id) AS sessions
+      FROM dates
+      LEFT JOIN analytics_events ON date(received_at, '+8 hours') = dates.day
+      GROUP BY dates.day ORDER BY dates.day`)
+      .bind(`-${days - 1} days`)
+      .all(),
     env.DB.prepare(`SELECT page_path, COUNT(*) AS views, COUNT(DISTINCT session_id) AS sessions
       FROM analytics_events
       WHERE event_name = 'page_view' AND received_at >= datetime('now', ?)
@@ -152,7 +182,7 @@ async function readStats(request, env, url) {
       .all(),
     env.DB.prepare(`SELECT COALESCE(utm_source, referrer, 'direct') AS source, COUNT(DISTINCT session_id) AS sessions
       FROM analytics_events
-      WHERE received_at >= datetime('now', ?)
+      WHERE event_name = 'page_view' AND received_at >= datetime('now', ?)
       GROUP BY source ORDER BY sessions DESC LIMIT 50`)
       .bind(`-${days} days`)
       .all()
@@ -163,6 +193,7 @@ async function readStats(request, env, url) {
       window_days: days,
       generated_at: new Date().toISOString(),
       summary,
+      daily: daily.results,
       pages: pages.results,
       skills: skills.results,
       sources: sources.results
@@ -171,6 +202,21 @@ async function readStats(request, env, url) {
     request,
     env
   );
+}
+
+function dashboardAsset(body, contentType, cacheable) {
+  const headers = {
+    "content-type": contentType,
+    "cache-control": cacheable ? "public, max-age=300" : "no-store",
+    "content-security-policy": "default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'",
+    "cross-origin-opener-policy": "same-origin",
+    "permissions-policy": "camera=(), microphone=(), geolocation=()",
+    "referrer-policy": "no-referrer",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-robots-tag": "noindex, nofollow, noarchive"
+  };
+  return new Response(body, { status: 200, headers });
 }
 
 function validateEvent(input) {

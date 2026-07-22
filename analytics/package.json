@@ -1,0 +1,10 @@
+{
+  "name": "the-data-galaxy-analytics",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check worker.js && node test.mjs",
+    "dev": "npx --yes wrangler@4.113.0 dev",
+    "deploy": "npx --yes wrangler@4.113.0 deploy"
+  }
+}

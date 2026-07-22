@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "the-data-galaxy-analytics",
+  "main": "worker.js",
+  "compatibility_date": "2026-07-22",
+  "observability": { "enabled": true },
+  "d1_databases": [{ "binding": "DB" }],
+  "ratelimits": [
+    {
+      "name": "EVENT_RATE_LIMITER",
+      "namespace_id": "1001",
+      "simple": { "limit": 120, "period": 60 }
+    }
+  ],
+  "vars": {
+    "ENVIRONMENT": "production",
+    "SITE_ORIGINS": "https://the-data-galaxy.github.io"
+  },
+  "triggers": {
+    "crons": ["17 3 * * *"]
+  }
+}

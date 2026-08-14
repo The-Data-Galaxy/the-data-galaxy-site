@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>正在前往那一片数据星辰</title>
+  <script>
+    const prefix = '/the-data-galaxy-site';
+    const path = location.pathname.startsWith(prefix)
+      ? location.pathname.slice(prefix.length) || '/'
+      : '/';
+    location.replace('https://xingchendata.com' + path + location.search + location.hash);
+  </script>
+</head>
+<body><p>页面已迁移至 <a href="https://xingchendata.com/">xingchendata.com</a>，正在为你跳转……</p></body>
+</html>
